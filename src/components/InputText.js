@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     height: hp(5),
     paddingLeft: 5,
     borderBottomWidth: 1,
-    borderBottomColor: Colors.primary,
+    borderBottomColor: Colors.accent,
   },
 });
 

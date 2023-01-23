@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {
@@ -8,10 +8,12 @@ import {
 import InputText from '../../components/InputText';
 import Colors from '../../constant/Colors';
 import Button from '../../components/Button';
+import {useTheme} from '@react-navigation/native';
+
 const LoginScreen = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const {colors} = useTheme();
   return (
     <View style={styles.container}>
       <FastImage
@@ -20,6 +22,7 @@ const LoginScreen = props => {
         }}
         style={styles.image}
       />
+
       <View style={{flex: 2}}>
         <View style={{alignSelf: 'flex-start'}}>
           <Text style={styles.label}>Login</Text>
@@ -30,20 +33,34 @@ const LoginScreen = props => {
             value={email}
             onChangeText={email => setEmail(email)}
             placeholder={'Email'}
-            inputStyle={{marginBottom: 15}}
+            inputStyle={{
+              marginBottom: 15,
+              color: colors.text,
+              fontWeight: '700',
+            }}
           />
           <InputText
             value={password}
             placeholder={'Password'}
             onChangeText={password => setPassword(password)}
+            inputStyle={{color: colors.text, fontWeight: '700'}}
           />
-          <Button title={'Login'} onPress={() => {}} />
+          <Button
+            title={'Login'}
+            btnLabelStyle={{fontSize: 18}}
+            onPress={() => {}}
+          />
         </View>
       </View>
+
       <View style={styles.bottomText}>
-        <Text>You Don't Have An Account ?</Text>
+        <Text style={{fontWeight: '400', color: colors.text}}>
+          You Don't Have An Account ?
+        </Text>
         <TouchableOpacity onPress={() => props.navigation.navigate('Register')}>
-          <Text style={{color: Colors.primary}}>Create Account</Text>
+          <Text style={{fontWeight: '500', color: Colors.accent}}>
+            Create Account
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -62,8 +79,8 @@ const styles = StyleSheet.create({
     height: HP(40),
   },
   label: {
-    fontSize: 24,
-    color: Colors.primary,
+    fontSize: 30,
+    color: Colors.accent,
     fontWeight: '600',
     marginVertical: 10,
   },

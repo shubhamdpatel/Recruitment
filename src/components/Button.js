@@ -7,11 +7,11 @@ import {
 import Colors from '../constant/Colors';
 
 const Button = props => {
-  const {title, onPress} = props;
+  const {title, onPress, btnLabelStyle, btnStyle} = props;
   return (
     <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
-      <View style={styles.container}>
-        <Text style={styles.btnLabel}>{title}</Text>
+      <View style={[styles.container, {...btnStyle}]}>
+        <Text style={[styles.btnLabel, {...btnLabelStyle}]}>{title}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: Colors.white,
     fontSize: 16,
+    fontWeight: '700',
   },
 });
 export default Button;

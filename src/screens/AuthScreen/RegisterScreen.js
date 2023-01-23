@@ -8,9 +8,12 @@ import {
 import InputText from '../../components/InputText';
 import Colors from '../../constant/Colors';
 import Button from '../../components/Button';
+import {useTheme} from '@react-navigation/native';
+
 const RegisterScreen = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {colors} = useTheme();
 
   return (
     <View style={styles.container}>
@@ -31,30 +34,50 @@ const RegisterScreen = props => {
             value={email}
             onChangeText={email => setEmail(email)}
             placeholder={'Email'}
-            inputStyle={{marginBottom: 15}}
+            inputStyle={{
+              marginBottom: 15,
+              color: colors.text,
+              fontWeight: '700',
+            }}
           />
 
           <InputText
             value={password}
             placeholder={'Password'}
             onChangeText={password => setPassword(password)}
-            inputStyle={{marginBottom: 15}}
+            inputStyle={{
+              marginBottom: 15,
+              color: colors.text,
+              fontWeight: '700',
+            }}
           />
 
           <InputText
             value={password}
             placeholder={'Confirm Password'}
             onChangeText={password => setPassword(password)}
+            inputStyle={{
+              color: colors.text,
+              fontWeight: '700',
+            }}
           />
 
-          <Button title={'Submit'} onPress={() => {}} />
+          <Button
+            title={'Submit'}
+            btnLabelStyle={{fontSize: 18}}
+            onPress={() => {}}
+          />
         </View>
       </View>
 
       <View style={styles.bottomText}>
-        <Text>Don You Have An Account ?</Text>
+        <Text style={{fontWeight: '400', color: colors.text}}>
+          Don You Have An Account ?
+        </Text>
         <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
-          <Text style={{color: Colors.primary}}>Login Here!</Text>
+          <Text style={{fontWeight: '500', color: Colors.accent}}>
+            Login Here!
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -73,8 +96,8 @@ const styles = StyleSheet.create({
     height: HP(40),
   },
   label: {
-    fontSize: 24,
-    color: Colors.primary,
+    fontSize: 30,
+    color: Colors.accent,
     fontWeight: '600',
     marginVertical: 10,
   },

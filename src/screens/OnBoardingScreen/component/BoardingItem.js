@@ -1,33 +1,20 @@
 import React from 'react';
-import {Image, Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Image, Text, View, StyleSheet} from 'react-native';
+import {useTheme} from '@react-navigation/native';
 import Colors from '../../../constant/Colors';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import {RIcon} from '../../../components/Icon';
+
 const BoardingItem = props => {
   const {item} = props?.Data;
+  const {colors} = useTheme();
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: 20,
-        }}>
-        <Text style={styles.skip}>Skip</Text>
-        <RIcon
-          icon={{
-            name: 'oct/triangle-right',
-            style: {marginLeft: 10},
-            color: Colors.accent,
-            size: 26,
-          }}
-        />
-      </TouchableOpacity>
       <Image source={item.image} style={styles.image} />
       <View style={{flex: 0.3}}>
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.description}>{item.description}</Text>
+        <Text style={[styles.description, {color: colors.text}]}>
+          {item.description}
+        </Text>
       </View>
     </View>
   );
@@ -57,9 +44,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   description: {
-    fontWeight: '300',
+    fontWeight: '500',
     fontSize: 14,
-    color: Colors.white,
     textAlign: 'center',
     width: wp(90),
     marginVertical: 10,

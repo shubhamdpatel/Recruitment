@@ -1,23 +1,26 @@
 import React from 'react';
-import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
+import {useColorScheme} from 'react-native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native';
 import AuthNavigation from './Stack/AuthNavigation';
 import BottomTabNavigation from './BottomTab/BottomTabNavigation';
-import OnBoardingNavigation from './Stack/onBoardingNavigation';
 
 const RootNavigation = () => {
   const user = true;
+  const isDarkMode = useColorScheme() === 'dark';
   const MyTheme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: 'rgb(255, 45, 85)',
+      background: 'rgb(255, 255, 255)',
     },
   };
-  // console.log('MyTheme===>', MyTheme);
   return (
-    <NavigationContainer theme={MyTheme}>
-      {/*{!user ? <BottomTabNavigation /> : <AuthNavigation />}*/}
-      {user ? <OnBoardingNavigation /> : <AuthNavigation />}
+    <NavigationContainer theme={isDarkMode ? DarkTheme : MyTheme}>
+      {!user ? <BottomTabNavigation /> : <AuthNavigation />}
     </NavigationContainer>
   );
 };
