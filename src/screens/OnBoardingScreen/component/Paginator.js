@@ -53,7 +53,7 @@ const Paginator = props => {
           icon={{
             name: 'mc/arrow-right-thin',
             size: 33,
-            color: Colors.accent,
+            color: Colors.white,
           }}
         />
       </TouchableOpacity>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.primary,
     borderRadius: 30,
     padding: 10,
     marginBottom: 20,
