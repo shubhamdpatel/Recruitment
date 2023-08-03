@@ -47,6 +47,7 @@ const Paginator = props => {
           );
         })}
       </View>
+
       <TouchableOpacity style={styles.rightArrow} onPress={scrollTo}>
         <RIcon
           icon={{
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.white,
     borderRadius: 30,
     padding: 10,
     marginBottom: 20,
